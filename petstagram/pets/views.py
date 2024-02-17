@@ -9,11 +9,8 @@ def create_pet(request):
 
 
 def pet_details(request, username, pet_slug):
-    context = {
-        'pet': Pet.objects.get(slug=pet_slug),
-
-    }
-    return render(request, "pets/pet_details.html", context=context)
+    context = {}
+    return render(request, "pets/pet_details.html", context)
 
 
 def pet_edit(request, username, pet_slug):

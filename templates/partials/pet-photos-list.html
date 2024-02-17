@@ -27,7 +27,9 @@
                             </a>
                             <br>
                             <!-- if the photo has location -->
-                            <span>{{ photo.location }}</span>
+                            {% if photo.location %}
+                                <span>{{ photo.location }}</span>
+                            {% endif %}
                         </h3>
                     </div>
                 </div>
@@ -82,13 +84,12 @@
                     <!-- End Tagged Pets -->
 
                     <!-- Link to Photo Details Page -->
-                    <a href="{% url 'pet details' pk=photo.pk %}">
+                    <a href="{% url 'details photo' pk=photo.pk  %}">
                         <h4 class="details">See details</h4>
                     </a>
 
                     <!-- Date of Publication -->
-                    <h5 class="postTime">{{ photo.date_of_publication|date: 'd/m/Y'}}</h5>
-
+                    <h5 class="postTime">{{ photo.date_of_publication }}</h5>
                     <!-- Start Add Comments Section -->
                     <div class="addComments">
 
