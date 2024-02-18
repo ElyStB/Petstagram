@@ -11,16 +11,16 @@
                 <div class="profile_img">
                     <div class="image">
                         <!-- Pet URL Image -->
-                        <img src="https://encrypted-tbn0.gstatic.com/static/images?q=tbn:ANd9GcTgoIHq82qLYnvomfz5ZkW5CLQ8VNxCyI-hUw&usqp=CAU"
+                        <img src="{{ pet.pet_photo }}"
                              alt="img8">
                     </div>
                 </div>
                 <div class="personal">
                     <div class="edit">
                         <!-- Pet Name -->
-                        <p>Sasho</p>
+                        <p>{{ pet.name }}</p>
                         <!-- Pet Edit Button -->
-                        <a href="">
+                        <a href="{% url 'pet edit' username='Diyan Kalaydzhiev' pet_slug=pet.slug %}">
                             <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
                         </a>
                         <!-- Pet Delete Button -->
@@ -30,7 +30,7 @@
                     </div>
                     <div class="data">
                         <!-- Pet Total Photos -->
-                        <span>4</span>
+                        <span>{{ pet.petphoto_set.count }}</span>
                         <p>photos</p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
             <!-- IF Photos Start Pet Photos Post Section -->
 
-           {% include 'partials/pet-photos-list.html' %}
+           {% include 'partials/pet_photos_list.html' with pet_photo = pet.petphoto_set.all %}
 
 
         </div>

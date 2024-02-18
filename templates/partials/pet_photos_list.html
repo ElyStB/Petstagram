@@ -1,0 +1,18 @@
+{% load static %}
+
+{% for photo in pet_photo %}
+<!-- Start First Pet Photo Post -->
+{% include 'partials/pet_list_item.html' with photo=photo %}
+{% empty %}
+
+    <!-- IF Photos End Pet Photos Post Section -->
+
+<!-- IF NOT Photos Show No Post Image -->
+    <img class="no-posts" src="{% static 'images/no_posts.png' %}" alt="no posts image">
+
+{% endfor %}
+ <!-- End Pet Photo Post -->
+
+
+
+
