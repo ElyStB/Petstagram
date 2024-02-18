@@ -14,12 +14,12 @@ def index(request):
 
 def like_pet_photo(request, pk):
     # pet_photo_like = PhotoLike.objects.first(pk=pk, user=request.user)
-    pet_photo_like = PhotoLike.objects.filter(pet_photo_id=pk).first()
+    pet_photo_like = PhotoLike.objects.filter(to_photo_id=pk).first()
 
     if pet_photo_like:
         # dislike
         pet_photo_like.delete()
     else:
-        PhotoLike.objects.create(pet_photo_id=pk)
+        PhotoLike.objects.create(to_photo_id=pk)
 
-    return redirect(request.META.get['HTTP_REFERER'] + f"#photo-{pk}")
+    return redirect(request.META['HTTP_REFERER'] + f"#photo-{pk}")

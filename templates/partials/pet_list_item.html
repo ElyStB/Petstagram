@@ -46,11 +46,14 @@
                         <div class="left">
                             <!-- Start Like Button -->
                             <span class="heart">
-                                <a href="#">
+                                <a href="{% url 'like_pet_photo' pk=photo.pk %}">
                                     <!-- if user has liked the photo -->
+                                    {% if photo.photolike_set.count > 0 %}
                                     <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
                                     <!-- else -->
+                                    {% else %}
                                     <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
                                 </a>
                             </span>
                             <!-- End Like Button -->
@@ -66,7 +69,7 @@
                     <!-- End Like and Share Buttons -->
 
                     <!-- Number of Likes per Photo -->
-                    <p class="likes">203 likes</p>
+                    <p class="likes">{{ photo.photolike_set.count }}</p>
 
 
                     <!-- Start Tagged Pets -->
