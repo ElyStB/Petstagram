@@ -30,34 +30,34 @@
                             <i>Add Photo</i>
                         </a>
                     </li>
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item">
-
+                            <!-- Link to Profile Page -->
+                    <li class="nav-item">
+                        <a href="{% url 'details profile' pk=2 %}">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                         <!-- Lpg out -->
+                        <a href="{% url 'signout user' %}">
+                            <i>Log out</i>
+                          </a>
+                    </li>
+                        {% else %}
+                    <li class="nav-item">
                         <!-- Link to Login Page -->
                         <a href="{% url 'signin user' %}">
                             <i>Login</i>
                         </a>
                     </li>
                     <li class="nav-item">
-
                         <!-- Link to Register Page -->
                         <a href="{% url 'signup user' %}">
                             <i>Register</i>
                         </a>
                     </li>
-                    <li class="nav-item">
-
-                        <!-- Link to Profile Page -->
-                        <a href="{% url 'details profile' pk=2 %}">
-                            <i>Profile</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <!-- Lpg out -->
-                        <a href="{% url 'signout user' %}">
-                            <i>Log out</i>
-                        </a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

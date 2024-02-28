@@ -29,3 +29,5 @@ class PetEditForm(PetBaseForm):
         self.fields['date_of_birth'].widget.attrs['readonly'] = 'readonly'
 
 
+class PetDeleteForm(PetBaseForm):
+    pass
