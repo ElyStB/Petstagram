@@ -1,11 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from petstagram.pets.forms import PetCreateForm, PetEditForm
 from petstagram.pets.models import Pet
 from petstagram.photos.models import PetPhoto
 
 
 def create_photo(request):
-    context = {}
+    #pet_form = PetCreateForm(request.POST or None)
+
+    #if request.method == "POST":
+        #if pet_form.is_valid():
+            #pet_form.save()
+            #return redirect('details profile', pk=1)
+
+    context = {
+        #'pet_form': pet_form,
+    }
     return render(request, "photos/create_photo.html", context)
 
 
@@ -17,5 +27,7 @@ def details_photo(request, pk):
 
 
 def edit_photo(request: object, pk: object) -> object:
-    contex = {}
+    contex = {
+
+    }
     return render(request, "photos/edit_photo.html", contex)
