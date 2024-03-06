@@ -2,21 +2,21 @@ from django.shortcuts import render, redirect
 
 from petstagram.pets.forms import PetCreateForm, PetEditForm
 from petstagram.pets.models import Pet
+from petstagram.photos.forms import PetPhotoCreateForm
 from petstagram.photos.models import PetPhoto
 
 
 def create_photo(request):
-    #pet_form = PetCreateForm(request.POST or None)
+    photo_form = PetPhotoCreateForm(request.POST or None, request.FILES or None)
 
-    #if request.method == "POST":
-        #if pet_form.is_valid():
-            #pet_form.save()
-            #return redirect('details profile', pk=1)
+    if photo_form.is_valid():
+        photo_form.save()
+        return redirect('index')
 
     context = {
-        #'pet_form': pet_form,
+        'photo_form': photo_form,
     }
-    return render(request, "photos/create_photo.html", context)
+    return render(request, "photos/create_photo.html", context=context)
 
 
 def details_photo(request, pk):
