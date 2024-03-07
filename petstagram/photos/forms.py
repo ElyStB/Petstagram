@@ -7,3 +7,12 @@ class PetPhotoCreateForm(forms.ModelForm):
     class Meta:
         model = PetPhoto
         fields = '__all__'
+
+
+class PetPhotoEditForm(forms.ModelForm):
+    class Meta:
+        model = PetPhoto
+        exclude = ['photo']
+
+
+

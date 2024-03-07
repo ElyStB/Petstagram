@@ -8,9 +8,9 @@ class PhotoComment(models.Model):
 
     text = models.TextField(max_length=MAX_COMMENT_TEXT_LENGTH)
     date_time_of_publication = models.DateTimeField(auto_now_add=True)
-    to_photo = models.ForeignKey(PetPhoto, on_delete=models.DO_NOTHING)
+    to_photo = models.ForeignKey(PetPhoto, on_delete=models.CASCADE)
 
 
 class PhotoLike(models.Model):
-    to_photo = models.ForeignKey(PetPhoto, on_delete=models.DO_NOTHING)
+    to_photo = models.ForeignKey(PetPhoto, on_delete=models.CASCADE)
 
