@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block main_content %}
+{% load custom_filters %}
 
     <!-- Start Login Section-->
     <div class="login-register-div">
@@ -10,15 +11,10 @@
             <h1>Petstagram</h1>
 
             <!-- Start Login Form-->
-            <form action="#">
-                <p>
-                    <label for="id_username">Username:</label>
-                    <input type="text" placeholder="Username">
-                </p>
-                <p>
-                    <label for="id_password">Password:</label>
-                    <input type="password" placeholder="Password">
-                </p>
+            <form action="{% url 'signin user' %}" method="post">
+                {{ form.username|placeholder:'Email' }}
+                {{ form.password|placeholder:'Password' }}
+                {% csrf_token %}
 
                 <!-- Login Button-->
                 <button type="submit">Log in</button>
