@@ -7,7 +7,7 @@
         <h2>Add photo</h2>
         <!-- Start Add Photo Form -->
         <form action="{% url 'create photo' %}" method="post" enctype="multipart/form-data">
-            {{ photo_form.as_p }}
+            {{ form.as_p }}
 
             {% csrf_token %}
             <!-- Add Photo Button -->

@@ -1,8 +1,8 @@
-from petstagram.pets.views import create_pet, pet_delete, pet_edit, pet_details
+from petstagram.pets.views import pet_delete, pet_edit, pet_details, CreatePetView
 from django.urls import path, include
 
 urlpatterns = (
-    path("create/", create_pet, name="create pet"),
+    path("create/", CreatePetView.as_view(), name="create pet"),
     path("<str:username>/pet/<slug:pet_slug>/",
         include([
             path("", pet_details, name="pet details"),

@@ -24,13 +24,13 @@ def index(request):
 
 def like_pet_photo(request, pk):
     # pet_photo_like = PhotoLike.objects.first(pk=pk, user=request.user)
-    pet_photo_like = PhotoLike.objects.filter(to_photo_id=pk).first()
+    pet_photo_like = PhotoLike.objects.filter(to_photo_id=pk, user=request.user).first()
 
     if pet_photo_like:
         # dislike
         pet_photo_like.delete()
     else:
-        PhotoLike.objects.create(to_photo_id=pk)
+        PhotoLike.objects.create(to_photo_id=pk, user=request.user)
 
     return redirect(request.META['HTTP_REFERER'] + f"#photo-{pk}")
 
@@ -43,6 +43,7 @@ def add_comment(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.to_photo = pet_photo_comment
+            comment.user = request.user
             comment.save()
 
         return redirect(request.META['HTTP_REFERER'] + f'#photo-{pk}')

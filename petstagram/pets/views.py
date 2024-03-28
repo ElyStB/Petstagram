@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import generic as views
 
 from petstagram.common.forms import CommentForm
 from petstagram.pets.models import Pet
 from petstagram.pets.forms import PetBaseForm, PetCreateForm, PetDeleteForm
 
-
+"""
 def create_pet(request):
     pet_form = PetBaseForm(request.POST or None)
 
@@ -17,6 +19,22 @@ def create_pet(request):
         'pet_form': pet_form,
     }
     return render(request, "pets/create_pet.html", context=context)
+"""
+
+
+class CreatePetView(views.CreateView):
+    model = Pet
+    form_class = PetCreateForm
+    template_name = "pets/create_pet.html"
+
+    def form_valid(self, form):
+        pet = form.save(commit=False)
+        pet.user = self.request.user
+        pet.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('details profile', kwargs={'pk': self.request.user.pk})
 
 
 def pet_details(request, username, pet_slug):
